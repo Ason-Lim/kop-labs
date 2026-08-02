@@ -1,0 +1,23 @@
+id: IOP-CHARTER-2026-001
+version: 0.1
+status: draft
+publisher: KOP Labs
+project:
+  id: institution-operating-platform
+  name:
+    en: Institution Operating Platform
+    ko: Institution Operating Platform
+motto:
+  en: Build Institutions, Not Just Software.
+  ko: 우리는 소프트웨어가 아니라 Institution을 만든다.
+foundation_statement:
+  en: Software enables institutions. Institution Engineering enables the future of institutions.
+  ko: 소프트웨어는 기관을 지원하고, Institution Engineering은 기관의 미래를 설계한다.
+governance:
+  documentation: 00_0 Foundation Documentation Council
+  architecture: 00_1 Foundation Architecture Council
+reporting:
+  classifications:
+    - fact
+    - assumption
+    - unverified
