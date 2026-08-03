@@ -1,0 +1,118 @@
+registry_id: ROS-VALIDATION-2026-001
+title: Research Validation Registry
+version: "1.0"
+status: active
+owner: Institution Design Studio
+governing_document: ROS-2026-001
+
+decision_values:
+  supported:
+    description: Evidence supports the question, hypothesis, or model within stated limitations.
+  partially_supported:
+    description: Evidence supports only part of the evaluated claim.
+  inconclusive:
+    description: Evidence is insufficient or conflicting.
+  rejected:
+    description: Evidence contradicts the evaluated claim.
+  not_applicable:
+    description: The evaluated decision does not apply to the object or scope.
+
+validation_dimensions:
+  product:
+    description: Evaluates whether the product satisfied experiment criteria.
+  methodology:
+    description: Evaluates whether the research process produced traceable and reproducible knowledge.
+  architecture:
+    description: Evaluates whether architecture responsibilities and constraints remain valid.
+  generalization:
+    description: Evaluates whether findings extend beyond the original case.
+  governance:
+    description: Evaluates whether authority, lifecycle, and adoption rules were followed.
+
+validation_statuses:
+  - planned
+  - in_review
+  - completed
+  - accepted
+  - superseded
+
+validation_records:
+  - id: VAL-2026-002
+    title: Operational Research Cycle Validation
+    version: "1.0"
+    status: completed
+    program: RP-2026-001
+    question: RQ-2026-001
+    hypothesis: H-2026-001
+    experiments:
+      - EXP-2026-001
+    evidence:
+      - OE-2026-002
+    dimensions:
+      product: supported
+      methodology: supported
+      architecture: supported
+      generalization: inconclusive
+      governance: supported
+    overall_decision: supported
+    canonical_path: research/validations/VAL-2026-002_operational_research_cycle_validation.md
+    completed_date: 2026-08-03
+    accepted_date: null
+    limitations:
+      - Duck verification substantially reproduced prior development tests.
+      - Cross-domain generality was not established.
+      - Full platform production readiness was not evaluated.
+    outputs:
+      - RM-2026-003-v1.1
+      - RMILESTONE-2026-005
+
+  - id: VAL-2026-003
+    title: Goat Operational Validation
+    version: "1.0"
+    status: planned
+    program: RP-2026-002
+    question: RQ-2026-002
+    hypothesis: H-2026-002
+    experiments:
+      - EXP-2026-002
+    evidence:
+      - OE-2026-003
+    dimensions:
+      product: null
+      methodology: null
+      architecture: null
+      generalization: null
+      governance: null
+    overall_decision: null
+    canonical_path: research/validations/VAL-2026-003_goat_operational_validation.md
+    completed_date: null
+    accepted_date: null
+    limitations:
+      - Planned validation. Evidence is not yet available.
+    outputs:
+      - RM-2026-004
+
+required_fields:
+  - id
+  - title
+  - version
+  - status
+  - program
+  - question
+  - hypothesis
+  - experiments
+  - evidence
+  - dimensions
+  - overall_decision
+  - canonical_path
+  - limitations
+  - outputs
+
+validation_rules:
+  - completed_validation_requires_at_least_one_evidence_record
+  - completed_validation_requires_limitations
+  - overall_decision_must_use_registered_value
+  - product_and_methodology_dimensions_must_be_distinguished
+  - accepted_validation_requires_authorized_review
+  - superseded_validation_must_reference_replacement
+  - foundation_promotion_must_not_be_inferred_from_single_validation

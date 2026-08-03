@@ -1,0 +1,285 @@
+model_id: ROS-LIFECYCLE-2026-001
+title: Research Object Lifecycle State Model
+version: "1.0"
+status: active
+owner: Institution Design Studio
+governing_document: ROS-2026-001
+
+principles:
+  - id: separate_completion_and_validation
+    statement: Completion and validation are distinct lifecycle states.
+  - id: transition_requires_basis
+    statement: Every state transition requires a trigger, authorized actor, and recorded basis.
+  - id: preserve_history
+    statement: Superseded and archived objects remain traceable.
+
+common_states:
+  draft:
+    description: Initial object under preparation.
+    terminal: false
+  proposed:
+    description: Submitted for review or activation.
+    terminal: false
+  active:
+    description: Currently governing, operating, or under execution.
+    terminal: false
+  completed:
+    description: Planned work or content has been completed but may not be validated.
+    terminal: false
+  validated:
+    description: Evidence and review support the stated result within defined limitations.
+    terminal: false
+  superseded:
+    description: Replaced by a later canonical object or version.
+    terminal: true
+  archived:
+    description: Retained for historical traceability and no longer active.
+    terminal: true
+
+lifecycles:
+  common:
+    applies_to:
+      - RP
+      - RQ
+      - H
+      - DN
+      - AR
+      - ORC
+      - JDM
+      - RMILESTONE
+      - SPRINT
+      - RELEASE
+      - ROADMAP
+      - ROS
+    initial_state: draft
+    transitions:
+      - from: draft
+        to: proposed
+        trigger: submitted_for_review
+      - from: proposed
+        to: active
+        trigger: approved_for_operation
+      - from: active
+        to: completed
+        trigger: defined_scope_completed
+      - from: completed
+        to: validated
+        trigger: validation_or_acceptance_completed
+      - from: active
+        to: superseded
+        trigger: replacement_activated
+      - from: completed
+        to: superseded
+        trigger: replacement_activated
+      - from: validated
+        to: superseded
+        trigger: replacement_activated
+      - from: superseded
+        to: archived
+        trigger: archival_review_completed
+
+  experiment:
+    applies_to:
+      - EXP
+    initial_state: planned
+    states:
+      planned:
+        description: Experiment is registered but not yet prepared.
+      prepared:
+        description: Protocol, scope, and required resources are ready.
+      environment_verified:
+        description: Execution environment and baseline have been verified.
+      active:
+        description: Experiment execution is in progress.
+      completed:
+        description: Execution ended and observations were captured.
+      validated:
+        description: Experiment outputs were evaluated through Validation.
+      archived:
+        description: Experiment is closed and retained for traceability.
+    transitions:
+      - from: planned
+        to: prepared
+        trigger: protocol_approved
+      - from: prepared
+        to: environment_verified
+        trigger: environment_check_passed
+      - from: environment_verified
+        to: active
+        trigger: execution_started
+      - from: active
+        to: completed
+        trigger: execution_closed
+      - from: completed
+        to: validated
+        trigger: validation_completed
+      - from: validated
+        to: archived
+        trigger: case_archived
+
+  evidence:
+    applies_to:
+      - OE
+    initial_state: captured
+    states:
+      captured:
+        description: Raw evidence has been recorded.
+      verified:
+        description: Source, environment, and integrity have been checked.
+      classified:
+        description: Evidence type, scope, and limitations have been assigned.
+      accepted:
+        description: Evidence is accepted for use in Validation.
+      superseded:
+        description: Replaced by stronger or corrected evidence while retained historically.
+      archived:
+        description: Evidence is closed and retained.
+    transitions:
+      - from: captured
+        to: verified
+        trigger: verification_completed
+      - from: verified
+        to: classified
+        trigger: classification_completed
+      - from: classified
+        to: accepted
+        trigger: accepted_for_validation
+      - from: accepted
+        to: superseded
+        trigger: corrected_or_stronger_evidence_accepted
+      - from: superseded
+        to: archived
+        trigger: archival_review_completed
+
+  validation:
+    applies_to:
+      - VAL
+    initial_state: planned
+    states:
+      planned:
+        description: Validation is registered and awaiting evidence.
+      in_review:
+        description: Evidence and hypothesis are under evaluation.
+      completed:
+        description: A decision and limitations have been recorded.
+      accepted:
+        description: The decision is accepted by the responsible authority.
+      superseded:
+        description: Replaced by a later Validation.
+    transitions:
+      - from: planned
+        to: in_review
+        trigger: required_evidence_available
+      - from: in_review
+        to: completed
+        trigger: evaluation_finished
+      - from: completed
+        to: accepted
+        trigger: decision_accepted
+      - from: completed
+        to: superseded
+        trigger: replacement_validation_completed
+      - from: accepted
+        to: superseded
+        trigger: replacement_validation_accepted
+
+  reference_model:
+    applies_to:
+      - RM
+    initial_state: emerging
+    states:
+      emerging:
+        description: Model is forming from observations and early evidence.
+      active:
+        description: Model is the current working reference.
+      validated:
+        description: Model has received supporting evidence within a defined scope.
+      revised:
+        description: Model has been changed based on evidence or governance.
+      stable:
+        description: Model has remained useful across repeated independent cases.
+      superseded:
+        description: Replaced by a later model.
+    transitions:
+      - from: emerging
+        to: active
+        trigger: approved_as_working_reference
+      - from: active
+        to: validated
+        trigger: supporting_validation_completed
+      - from: active
+        to: revised
+        trigger: revision_approved
+      - from: validated
+        to: revised
+        trigger: new_evidence_requires_change
+      - from: revised
+        to: active
+        trigger: revised_version_activated
+      - from: validated
+        to: stable
+        trigger: repeated_cross_case_validation
+      - from: stable
+        to: superseded
+        trigger: replacement_model_activated
+
+  foundation:
+    applies_to:
+      - FTR
+      - FP
+    initial_state: observation
+    states:
+      observation:
+        description: A potentially significant phenomenon has been observed.
+      discovery:
+        description: The observation has been documented and explored.
+      reference_model:
+        description: The concept has a structured working model.
+      theory_candidate:
+        description: Evidence supports formal theory consideration.
+      ftr:
+        description: A Foundation Theory Record has been created.
+      fp:
+        description: A Foundation Proposal has been submitted.
+      joint_review:
+        description: Independent governance review is active.
+      adopted:
+        description: The proposal has been institutionally adopted.
+      rejected:
+        description: The proposal has been rejected with recorded reasons.
+    transitions:
+      - from: observation
+        to: discovery
+        trigger: discovery_note_established
+      - from: discovery
+        to: reference_model
+        trigger: reference_model_activated
+      - from: reference_model
+        to: theory_candidate
+        trigger: repeated_validation_supports_candidate
+      - from: theory_candidate
+        to: ftr
+        trigger: ftr_created
+      - from: ftr
+        to: fp
+        trigger: foundation_proposal_created
+      - from: fp
+        to: joint_review
+        trigger: joint_review_opened
+      - from: joint_review
+        to: adopted
+        trigger: institutional_adoption_approved
+      - from: joint_review
+        to: rejected
+        trigger: institutional_adoption_rejected
+
+transition_record_required_fields:
+  - object_id
+  - object_type
+  - from_state
+  - to_state
+  - trigger
+  - authorized_actor
+  - transition_date
+  - basis
+  - related_evidence

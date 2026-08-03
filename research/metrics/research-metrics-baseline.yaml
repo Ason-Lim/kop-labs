@@ -1,0 +1,185 @@
+metrics_id: ROS-METRICS-2026-001
+title: Research Metrics Baseline
+version: "1.0"
+status: active
+owner: Institution Design Studio
+governing_document: ROS-2026-001
+baseline_date: 2026-08-03
+
+measurement_principles:
+  - Metrics are indicators and do not replace evidence or governance judgment.
+  - Counts shall be derived from canonical registries where possible.
+  - Unknown values shall remain null rather than be estimated as fact.
+  - Historical and novel evidence shall be measured separately.
+  - Failed experiments and environment failures shall be counted.
+
+object_metrics:
+  active_research_programs:
+    value: 2
+    source:
+      - RP-2026-001
+      - RP-2026-002
+  active_research_questions:
+    value: 1
+    source:
+      - RQ-2026-002
+    note: RQ-2026-001 is treated as completed by the Sprint 4 cycle.
+  active_hypotheses:
+    value: 1
+    source:
+      - H-2026-002
+  registered_experiments:
+    value: 2
+    source:
+      - EXP-2026-001
+      - EXP-2026-002
+  completed_experiments:
+    value: 1
+    source:
+      - EXP-2026-001
+  accepted_evidence_records:
+    value: 1
+    source:
+      - OE-2026-002
+  planned_evidence_records:
+    value: 1
+    source:
+      - OE-2026-003
+  completed_validations:
+    value: 1
+    source:
+      - VAL-2026-002
+  planned_validations:
+    value: 1
+    source:
+      - VAL-2026-003
+  active_reference_models:
+    value: 3
+    source:
+      - RM-2026-001
+      - RM-2026-002
+      - RM-2026-003-v1.1
+  achieved_research_milestones:
+    value: 6
+    source:
+      - RMILESTONE-2026-001
+      - RMILESTONE-2026-002
+      - RMILESTONE-2026-003
+      - RMILESTONE-2026-004
+      - RMILESTONE-2026-005
+      - RMILESTONE-2026-006
+  completed_sprints:
+    value: 4
+    source:
+      - SPRINT-2026-001
+      - SPRINT-2026-002
+      - SPRINT-2026-003
+      - SPRINT-2026-004
+  active_sprints:
+    value: 1
+    source:
+      - SPRINT-2026-005
+  completed_releases:
+    value: 4
+    source:
+      - RELEASE-2026-001
+      - RELEASE-2026-002
+      - RELEASE-2026-003
+      - RELEASE-2026-004
+
+cycle_metrics:
+  experiment_completion_rate:
+    numerator: 1
+    denominator: 2
+    value: 0.5
+    unit: ratio
+  evidence_reproduction_rate:
+    numerator: 1
+    denominator: 1
+    value: 1.0
+    unit: ratio
+    scope: completed accepted evidence
+  validation_completion_rate:
+    numerator: 1
+    denominator: 2
+    value: 0.5
+    unit: ratio
+  reference_model_revision_count:
+    value: 1
+    source:
+      - RM-2026-003-v1.1
+  unresolved_evidence_gaps:
+    value: 1
+    source:
+      - Goat novel operational evidence pending
+  failed_experiment_count:
+    value: 0
+    note: Environment setup failure in EXP-2026-001 was classified separately.
+  environment_failure_count:
+    value: 1
+    source:
+      - EXP-2026-001 initial app import failure
+  mean_time_rq_to_validation_days:
+    value: null
+    note: Insufficient structured timestamp history.
+  mean_time_experiment_to_evidence_days:
+    value: null
+    note: Insufficient structured timestamp history.
+
+maturity_metrics:
+  domains_with_controlled_test_evidence:
+    value: 1
+    domains:
+      - duck
+  domains_with_novel_development_evidence:
+    value: 0
+    domains: []
+  domains_with_completed_operational_cycles:
+    value: 1
+    domains:
+      - duck
+  platforms_with_completed_operational_cycles:
+    value: 1
+    platforms:
+      - Commerce AI Platform
+  repeated_cross_domain_findings:
+    value: 0
+  repeated_cross_platform_findings:
+    value: 0
+  stable_reference_models:
+    value: 0
+  foundation_principle_candidates:
+    value: 1
+    candidates:
+      - Methodological Reflexivity
+  adopted_foundation_artifacts_from_operational_research:
+    value: 0
+
+sprint_5_targets:
+  goat_repository_baseline_recorded: false
+  ar_2026_002_completed: false
+  goat_development_completed_or_bounded: false
+  exp_2026_002_completed: false
+  oe_2026_003_accepted: false
+  val_2026_003_completed: false
+  rm_2026_004_decision_recorded: false
+  ros_registry_updates_complete: false
+  sprint_2026_005_closed: false
+
+update_policy:
+  update_events:
+    - research_object_created
+    - lifecycle_state_changed
+    - experiment_completed
+    - evidence_accepted
+    - validation_completed
+    - reference_model_revised
+    - milestone_achieved
+    - sprint_closed
+    - release_created
+  canonical_sources:
+    - research/registry/research-object-registry.yaml
+    - research/registry/program-registry.yaml
+    - research/registry/experiment-registry.yaml
+    - research/registry/evidence-registry.yaml
+    - research/registry/validation-registry.yaml
