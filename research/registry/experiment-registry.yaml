@@ -1,1 +1,31 @@
-experiments: []
+experiments:
+
+  - id: EXP-2026-001
+
+    title: Duck Runtime Verification
+
+    status: planned
+
+    owner: Institution Design Studio
+
+    program:
+      RP-2026-001
+
+    platform:
+      - Commerce AI Platform
+
+    research_question:
+      - RQ-2026-001
+
+    hypothesis:
+      - H-2026-001
+
+    architecture_review:
+      - AR-2026-001
+
+    expected_outputs:
+      - OE-2026-002
+      - VAL-2026-002
+
+    reference_model:
+      - RM-2026-003
