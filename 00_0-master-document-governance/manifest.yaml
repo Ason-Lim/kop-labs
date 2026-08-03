@@ -1,0 +1,33 @@
+version: "1.0"
+repository: "KOP-00_0"
+starter_kit: "STK-00_0-v1.0"
+required_documents:
+  - "README.md"
+  - "ROOT.md"
+  - "CHARTER.md"
+  - "CONSTITUTION.md"
+  - "GOVERNANCE.md"
+required_metadata:
+  - "repository.yaml"
+  - "manifest.yaml"
+required_records:
+  - "SKAC-2026-0001.md"
+  - "RELEASE_NOTES.md"
+  - "CHANGELOG.md"
+required_directories:
+  - "docs"
+  - "archive"
+  - "releases"
+  - "templates"
+  - "scripts"
+  - "validation"
+publication:
+  markdown: true
+  pdf: false
+  docx: false
+validation:
+  require_identity: true
+  require_manifest: true
+  require_governance: true
+  require_traceability: true
+  require_acceptance_certificate: true
