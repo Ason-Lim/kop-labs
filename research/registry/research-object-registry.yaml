@@ -1,0 +1,29 @@
+registry_version: "1.0"
+research_objects:
+  - id: RP-2026-002
+    type: research_program
+    status: active
+    path: research/programs/RP-2026-002_cross_domain_generalization.md
+  - id: RQ-2026-002
+    type: research_question
+    status: active
+    parent: RP-2026-002
+    path: research/research-questions/RQ-2026-002_goat_domain_generalization.md
+  - id: H-2026-002
+    type: hypothesis
+    status: active
+    parent: RQ-2026-002
+    path: research/hypotheses/H-2026-002_goat_domain_generalization.md
+  - id: ROADMAP-2026-001
+    type: research_roadmap
+    status: active
+    path: research/roadmaps/ROADMAP-2026-001_institution_engineering_research_roadmap.md
+  - id: RMILESTONE-2026-006
+    type: research_milestone
+    status: achieved
+    path: research/milestones/RMILESTONE-2026-006_cross_domain_research_program_established.md
+  - id: SPRINT-2026-005
+    type: research_sprint
+    status: active
+    parent: RP-2026-002
+    path: research/sprints/SPRINT-2026-005_cross_domain_generalization_initiation.md

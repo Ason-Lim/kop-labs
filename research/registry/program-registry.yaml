@@ -1,0 +1,18 @@
+registry_version: "1.0"
+programs:
+  - id: RP-2026-001
+    title: Institutional Knowledge Production
+    status: active
+    role: parent_research_program
+  - id: RP-2026-002
+    title: Cross-Domain Generalization Program
+    status: active
+    parent: RP-2026-001
+    owner: Institution Design Studio
+    initial_domains:
+      - goat
+      - cheese
+      - coffee
+      - wine
+    current_research_question: RQ-2026-002
+    current_sprint: SPRINT-2026-005
