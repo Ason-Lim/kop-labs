@@ -1,31 +1,30 @@
+registry_version: "1.1"
 experiments:
-
   - id: EXP-2026-001
-
     title: Duck Runtime Verification
-
-    status: planned
-
+    version: "1.0"
+    status: completed
     owner: Institution Design Studio
-
-    program:
-      RP-2026-001
-
+    program: RP-2026-001
     platform:
       - Commerce AI Platform
-
     research_question:
       - RQ-2026-001
-
     hypothesis:
       - H-2026-001
-
     architecture_review:
       - AR-2026-001
-
-    expected_outputs:
+    outputs:
       - OE-2026-002
       - VAL-2026-002
-
-    reference_model:
-      - RM-2026-003
+      - RM-2026-003-v1.1
+      - RMILESTONE-2026-005
+    baseline:
+      repository: commerce_ai_generator
+      commit: 39ce15d
+    result:
+      duck_domain_tests: 90
+      duck_registry_integration_tests: 6
+      total_passed: 96
+      failed: 0
+    completed_date: 2026-08-03
